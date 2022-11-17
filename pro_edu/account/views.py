@@ -8,9 +8,11 @@ from rest_framework_simplejwt.views import TokenObtainPairView
 
 
 
-# Create your views here.
 
 
+class RegistrationApi(CreateModelMixin,GenericViewSet):
+    queryset = User.objects.all()
+    serializer_class = RegisterSerializer
 
 
 
