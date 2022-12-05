@@ -8,6 +8,8 @@ djangorestframework = "*"
 django-phonenumber-field = {extras = ["phonenumberslite"], version = "*"}
 djoser = "*"
 djangorestframework-simplejwt = "*"
+django-solo = "*"
+pillow = "*"
 
 [dev-packages]
 
