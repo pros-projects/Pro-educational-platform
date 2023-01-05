@@ -38,10 +38,11 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'djoser',
-    "phonenumber_field",
+    'phonenumber_field',
     'rest_framework',
     'account',
     'sections',
+    'courses',
 ]
 
 MIDDLEWARE = [

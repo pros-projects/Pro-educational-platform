@@ -4,7 +4,6 @@ from phonenumber_field.modelfields import PhoneNumberField
 from solo.models import SingletonModel
 
 
-
 # Create your models here.
 
 # class Footer(models.Model):
