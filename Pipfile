@@ -5,11 +5,12 @@ name = "pypi"
 
 [packages]
 djangorestframework = "*"
-django-phonenumber-field = {extras = ["phonenumberslite"], version = "*"}
 djoser = "*"
 djangorestframework-simplejwt = "*"
 django-solo = "*"
 pillow = "*"
+django-phonenumber-field = {extras = ["phonenumberslite"], version = "*"}
+moviepy = "*"
 
 [dev-packages]
 
