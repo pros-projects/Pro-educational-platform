@@ -6,11 +6,7 @@ from phonenumber_field.modelfields import PhoneNumberField
 
 from django.conf import settings
 
-# from ..courses.models import Courses
-# from ..pro_edu import settings
-# import sys
-# sys.path.append(".")
-#
+
 class User(AbstractUser):
     MALE = 'm'
     FEMALE = 'f'
@@ -34,15 +30,16 @@ class User(AbstractUser):
 class Customer(models.Model):
     user = models.OneToOneField(settings.AUTH_USER_MODEL,on_delete=models.CASCADE)
     active = models.BooleanField(default=True)
-    enrolled_at = models.ManyToManyField('courses.Courses')
+    enrolled_at = models.ManyToManyField('courses.Course')
+    tutor = models.BooleanField(default=False)
+
+
 
 
     def __str__(self):
         return f'customer {self.user.first_name} {self.user.last_name} with username {self.user.username} is enrolled'
-#
-#
-#
-#
-#
-#
-#
+    @property
+    def is_tutor(self):
+        if self.active and self.tutor:
+            return True
+        return False
