@@ -12,6 +12,8 @@ pillow = "*"
 django-phonenumber-field = {extras = ["phonenumberslite"], version = "*"}
 moviepy = "*"
 django-extensions = "*"
+black = "*"
+isort = "*"
 
 [dev-packages]
 

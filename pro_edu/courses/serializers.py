@@ -2,9 +2,27 @@ from rest_framework import serializers
 from .models import Section,Video,Course
 
 class VideoSerializer(serializers.ModelSerializer):
+    course = serializers.PrimaryKeyRelatedField(queryset=Course.objects.all(), write_only=True)
     class Meta:
         model = Video
-        fields = ['title','id','content','section','duration','subtitle']
+        fields = ['title','id','content','section','duration','subtitle','course',]
+    def validate(self, attrs):
+        section = attrs.get('section')
+        course = attrs["course"]
+        if not course.sections.filter(pk=section.pk).exists():
+            raise serializers.ValidationError("Section must be in the selected course")
+        return attrs
+    def create(self, validated_data):
+        course = validated_data.pop('course',None)
+        video = super(VideoSerializer,self).create(validated_data)
+        return video
+
+
+
+class CreateVideoSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Video
+        fields = ['title','content','section','subtitle','course']
 
 class SectionSerializer(serializers.ModelSerializer):
     videos = VideoSerializer(many=True)
