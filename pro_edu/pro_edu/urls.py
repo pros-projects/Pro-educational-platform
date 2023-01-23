@@ -16,11 +16,14 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path,include
 
+admin.site.site_header = 'Pro Edu Admin'
+admin.site.index_title = 'Ahmad'
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api-auth/', include('rest_framework.urls')),
     path('auth/',include('djoser.urls')),
     path('auth/',include('djoser.urls.jwt')),
     path('accounts/',include('account.urls')),
-    path('sections/',include('sections.urls'))
+    path('sections/',include('sections.urls')),
+    path('courses/',include('courses.urls')),
 ]
